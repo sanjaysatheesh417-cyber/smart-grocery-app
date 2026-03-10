@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="manifest" href="/static/manifest.json">
+<meta name="theme-color" content="#4CAF50">
+
+<title>Smart Grocery Budget</title>
+
+<link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🛒 Smart Grocery Budget Calculator</h1>
+
+<div class="card">
+
+<h2>Set Budget</h2>
+
+<input type="number" id="budget" placeholder="Enter your budget">
+
+</div>
+
+
+<div class="card">
+
+<h2>Grocery List</h2>
+
+<table>
+
+<tr>
+<th>Select</th>
+<th>Item</th>
+<th>Price</th>
+<th>Quantity</th>
+</tr>
+
+{% for g in groceries %}
+
+<tr>
+
+<td>
+<input type="checkbox" class="select">
+</td>
+
+<td>
+{{g.name}} ({{g.tamil}})
+</td>
+
+<td class="price">
+{{g.price}}
+</td>
+
+<td>
+<input type="number" class="qty" value="0" min="0">
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<button onclick="calculateTotal()">Calculate Total</button>
+
+<div class="total-box">
+Total: ₹<span id="total">0</span>
+</div>
+
+<div id="budgetStatus" class="status"></div>
+
+</div>
+
+
+<div class="card">
+
+<h2>Translation Tool</h2>
+
+<div class="translation-box">
+
+<input type="text" id="translateText" placeholder="Enter word">
+
+<button id="translateBtn">Translate</button>
+
+</div>
+
+<h3 id="translationResult"></h3>
+
+</div>
+
+</div>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>
